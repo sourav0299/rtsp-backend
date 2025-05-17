@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: rtsp-backend
+    env: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        value: your-secret-key
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: rtsp.stream.invoicify.in
