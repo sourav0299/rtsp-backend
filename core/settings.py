@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -132,7 +133,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("redis://default:39bnbv2FKU1GaLr5GZqceEbWPntaoK9E@redis-18317.c9.us-east-1-2.ec2.redns.redis-cloud.com:18317", "redis://127.0.0.1:6379")],
+            "hosts": [os.environ.get("REDIS_URL", "redis://127.0.0.1:6379")],
         },
     },
 }
